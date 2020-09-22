@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BookToRead } from "./BookToRead";
 
-function App() {
+const dummyBooks: BookToRead[] = [
+  {
+    id: 1,
+    title: "はじめてのReact",
+    authors: "ダミー",
+    memo: ""
+  },
+  {
+    id: 2,
+    title: "React Hooks入門",
+    authors: "ダミー",
+    memo: ""
+  },
+  {
+    id: 3,
+    title: "実践Reactアプリケーション開発",
+    authors: "ダミー",
+    memo: ""
+  }
+];
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section className="nav">
+        <h1>読みたい本リスト</h1>
+        <div className="button-like">本を追加</div>
+      </section>
+      <section className="main">
+        <h1>チュートリアルを始めましょう</h1>
+      </section>
     </div>
   );
-}
+};
 
 export default App;
