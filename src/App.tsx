@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { BookToRead } from "./BookToRead";
+import BookRow from "./BookRow";
 
 const dummyBooks: BookToRead[] = [
   {
@@ -24,6 +25,17 @@ const dummyBooks: BookToRead[] = [
 ];
 
 const App = () => {
+  const bookRows = dummyBooks.map((b) => {
+    return (
+      <BookRow
+        book={b}
+        key={b.id}
+        onMemoChange={(id, memo) => {}}
+        onDelete={(id) => {}}
+      />
+    );
+  });
+
   return (
     <div className="App">
       <section className="nav">
@@ -31,7 +43,7 @@ const App = () => {
         <div className="button-like">本を追加</div>
       </section>
       <section className="main">
-        <h1>チュートリアルを始めましょう</h1>
+        {bookRows}
       </section>
     </div>
   );
