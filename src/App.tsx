@@ -2,6 +2,25 @@ import React, {useState} from "react";
 import "./App.css";
 import { BookToRead } from "./BookToRead";
 import BookRow from "./BookRow";
+import Modal from "react-modal";
+import BookSearchDialog from "./BookSearchDialog";
+
+Modal.setAppElement("#root");
+
+const customStyles = {
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.8)"
+  },
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    padding: 0,
+    transform: "translate(-50%, -50%)"
+  }
+};
 
 const dummyBooks: BookToRead[] = [
   {
@@ -25,7 +44,9 @@ const dummyBooks: BookToRead[] = [
 ];
 
 const App = () => {
-  const[books, setBooks] = useState(dummyBooks);
+  const [books, setBooks] = useState(dummyBooks);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const handleBookDelete = (id: number) => {
     const newBooks = books.filter((b) => b.id !== id);
     setBooks(newBooks);
@@ -39,6 +60,15 @@ const App = () => {
     });
     setBooks(newBooks);
   }
+
+  const handleAddClick = () => {
+    setModalIsOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalIsOpen(false);
+  };
+  
   const bookRows = books.map((b) => {
     return (
       <BookRow
@@ -54,11 +84,20 @@ const App = () => {
     <div className="App">
       <section className="nav">
         <h1>読みたい本リスト</h1>
-        <div className="button-like">本を追加</div>
+        <div className="button-like" onClick={handleAddClick}>
+          本を追加
+        </div>
       </section>
       <section className="main">
         {bookRows}
       </section>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={handleModalClose}
+        style={customStyles}
+      >
+        <BookSearchDialog maxResults={20} onBookAdd={(b) => {}} />
+      </Modal>
     </div>
   );
 };
