@@ -8,7 +8,7 @@ type BookRowProps = {
 };
 
 const BookRow = (props: BookRowProps) => {
-    const { title, authors, memo} = props.book;
+    const { title, authors, addedDay, memo} = props.book;
 
     const handleMemoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         props.onMemoChange(props.book.id, e.target.value);
@@ -26,8 +26,8 @@ const BookRow = (props: BookRowProps) => {
             <div title={authors} className="authors">
                 {authors}
             </div>
-            <div>
-                登録日
+            <div className="addedDay">
+                登録日{addedDay}
             </div>
             <input
                 type='text'
