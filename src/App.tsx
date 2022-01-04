@@ -52,7 +52,12 @@ const App = () => {
   };
 
   const handleBookAdd = (book: BookDescription) => {
-    const newBook: BookToRead = {...book, id: Date.now(), memo:""};
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const day = now.getDay();
+
+    const newBook: BookToRead = {...book, id: Date.now(), addedDay: year + " " + month + " " + day , memo:""};
     const newBooks = [...books, newBook];
     setBooks(newBooks);
     setModalIsOpen(false);

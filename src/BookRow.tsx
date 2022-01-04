@@ -27,7 +27,7 @@ const BookRow = (props: BookRowProps) => {
                 {authors}
             </div>
             <div className="addedDay">
-                登録日{addedDay}
+                登録日:{addedDay}
             </div>
             <input
                 type='text'

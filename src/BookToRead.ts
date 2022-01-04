@@ -2,6 +2,6 @@ export type BookToRead = {
   id: number;
   title: string;
   authors: string;
-  addedDay?: Date;
+  addedDay?: string;
   memo: string;
 };
