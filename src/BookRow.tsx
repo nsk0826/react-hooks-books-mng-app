@@ -26,6 +26,9 @@ const BookRow = (props: BookRowProps) => {
             <div title={authors} className="authors">
                 {authors}
             </div>
+            <div>
+                登録日
+            </div>
             <input
                 type='text'
                 className="memo"
